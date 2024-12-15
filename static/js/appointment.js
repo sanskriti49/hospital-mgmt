@@ -70,49 +70,6 @@ $(document).ready(function () {
 			},
 		};
 
-		// $.ajax(settings).done(function (response) {
-		// 	for (i = 0; i < response.length; i++) {
-		// 		response[i].pat_fullname =
-		// 			response[i].pat_first_name + " " + response[i].pat_last_name;
-		// 		response[i].doc_fullname =
-		// 			response[i].doc_first_name + " " + response[i].doc_last_name;
-		// 	}
-
-		// 	table = $("#datatable4").DataTable({
-		// 		bDestroy: true,
-		// 		paging: true, // Table pagination
-		// 		ordering: true, // Column ordering
-		// 		info: true, // Bottom left status text
-		// 		aaData: response,
-		// 		aaSorting: [],
-		// 		aaColumns: [
-		// 			{
-		// 				mData: "doc_fullname",
-		// 			},
-		// 			{
-		// 				mData: "pat_fullname",
-		// 			},
-		// 			{
-		// 				mData: "appointment_date",
-		// 			},
-		// 			{
-		// 				mRender: function (o, type, row) {
-		// 					return row.is_emergency ? "Yes" : "No"; // Show "Yes" or "No" based on the emergency status
-		// 				},
-		// 			},
-		// 			{
-		// 				mRender: function (o) {
-		// 					return '<button class="btn-xs btn btn-danger delete-btn" type="button">Delete</button>';
-		// 				},
-		// 			},
-		// 		],
-		// 	});
-		// 	$("#datatable4 tbody").on("click", ".delete-btn", function () {
-		// 		var data = table.row($(this).parents("tr")).data();
-		// 		console.log(data);
-		// 		deleteAppointment(data.app_id);
-		// 	});
-		// });
 		$.ajax(settings).done(function (response) {
 			// Adjust the response data structure before passing to DataTable
 			for (i = 0; i < response.length; i++) {
