@@ -1,6 +1,3 @@
-#Tushar Borole
-#Python 2.7
-
 import sqlite3
 import json
 with open('config.json') as data_file:
@@ -8,7 +5,6 @@ with open('config.json') as data_file:
 
 conn=sqlite3.connect(config['database'], check_same_thread=False)
 conn.execute('pragma foreign_keys=ON')
-
 
 
 def dict_factory(cursor, row):
@@ -36,12 +32,14 @@ doc_first_name TEXT NOT NULL,
 doc_last_name TEXT NOT NULL,
 doc_ph_no TEXT NOT NULL,
 doc_date DATE DEFAULT (datetime('now','localtime')),
-doc_address TEXT NOT NULL);''')
+doc_address TEXT NOT NULL,
+doc_specialty TEXT);''')  # Added doc_specialty to the doctor table
 
 conn.execute('''CREATE TABLE if not exists appointment
 (app_id INTEGER PRIMARY KEY AUTOINCREMENT,
 pat_id INTEGER NOT NULL,
 doc_id INTEGER NOT NULL,
 appointment_date DATE NOT NULL,
+is_emergency BOOLEAN DEFAULT 0,  -- Added is_emergency to the appointment table
 FOREIGN KEY(pat_id) REFERENCES patient(pat_id),
 FOREIGN KEY(doc_id) REFERENCES doctor(doc_id));''')
